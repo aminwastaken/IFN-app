@@ -24,9 +24,7 @@ Une fois sur le site saisissez un code postal (ou sélectionnez une région, un 
 * [React](https://reactjs.org)
 * [Material UI](https://material-ui.com/)
 
-## Some metrics
-
-use with : http://vps-05d35bef.vps.ovh.net
+## Nos metriques performances
 
 * [gtmetrix](https://gtmetrix.com/reports/51.77.203.21/mGXzIbqb/)
 * [webpagetest](https://www.webpagetest.org/result/220319_BiDc01_AA4/)
