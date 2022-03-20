@@ -1,45 +1,40 @@
-import React, { useReducer, useCallback, useEffect } from 'react';
+import React, { useReducer, useCallback, useEffect } from "react";
 
-import {
-  Button,
-  Grid,
-  TextField
-} from '@material-ui/core';
+import { Button, Grid, TextField } from "@material-ui/core";
 
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import {
   getDepartments,
   getRegions,
   getTownshipByFullAddress,
-  getTownships
-} from '../../API/main';
+  getTownships,
+} from "../../API/main";
 
-import { useDispatch } from 'react-redux';
-import { actionSetTownShip } from '../action';
+import { useDispatch } from "react-redux";
+import { actionSetTownShip } from "../action";
 
 const initialState = {
   departmentList: [],
   regionList: [],
-  regionsLoaded : false,
-  selectedRegion: '',
-  selectedDepartment: '',
-  selectedTownship: '',
+  regionsLoaded: false,
+  selectedRegion: "",
+  selectedDepartment: "",
+  selectedTownship: "",
   townShipList: [],
 };
 
-const SET_REGION_LIST = 'SET_REGION_LIST';
-const SET_SELECTED_REGION = 'SET_SELECTED_REGION';
+const SET_REGION_LIST = "SET_REGION_LIST";
+const SET_SELECTED_REGION = "SET_SELECTED_REGION";
 
-const SET_DEPARTMENT_LIST = 'SET_DEPARTMENT_LIST';
-const SET_SELECTED_DEPARTMENT = 'SET_SELECTED_DEPARTMENT';
+const SET_DEPARTMENT_LIST = "SET_DEPARTMENT_LIST";
+const SET_SELECTED_DEPARTMENT = "SET_SELECTED_DEPARTMENT";
 
-const SET_TOWN_SHIP_LIST = 'SET_TOWN_SHIP_LIST';
-const SET_SELECTED_TOWNSHIP = 'SET_SELECTED_TOWNSHIP';
+const SET_TOWN_SHIP_LIST = "SET_TOWN_SHIP_LIST";
+const SET_SELECTED_TOWNSHIP = "SET_SELECTED_TOWNSHIP";
 
 const reducer = (state, action) => {
   switch (action.type) {
-
     case SET_REGION_LIST:
       return {
         ...state,
@@ -52,8 +47,8 @@ const reducer = (state, action) => {
         ...state,
         selectedRegion: action.value,
         departmentList: [],
-        selectedDepartment: '',
-        selectedTownship: '',
+        selectedDepartment: "",
+        selectedTownship: "",
         townShipList: [],
       };
 
@@ -61,12 +56,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         departmentList: action.value,
-        selectedTownship: '',
+        selectedTownship: "",
         townShipList: [],
       };
 
     case SET_SELECTED_DEPARTMENT:
-      return {...state, selectedDepartment: action.value};
+      return { ...state, selectedDepartment: action.value };
 
     case SET_TOWN_SHIP_LIST:
       return {
@@ -75,7 +70,7 @@ const reducer = (state, action) => {
       };
 
     case SET_SELECTED_TOWNSHIP:
-      return {...state, selectedTownship: action.value};
+      return { ...state, selectedTownship: action.value };
 
     default:
       return state;
@@ -108,7 +103,7 @@ const TabFullAddress = () => {
           }
         })
         .catch((error) => {
-          console.error('get region', error);
+          console.error("get region", error);
         });
 
       return () => {
@@ -125,21 +120,24 @@ const TabFullAddress = () => {
         dispatchState({ type: SET_DEPARTMENT_LIST, value: departments });
       })
       .catch((error) => {
-        console.error('', error);
-      });  
+        console.error("", error);
+      });
   }, []);
 
-  const onClickItemDepartment = useCallback((e) => {
-    const departmentName = e.target.value;
-    dispatchState({ type: SET_SELECTED_DEPARTMENT, value: departmentName });
-    getTownships(selectedRegion, departmentName)
-      .then((townShips) => {
-        dispatchState({ type: SET_TOWN_SHIP_LIST, value: townShips });
-      })
-      .catch((error) => {
-        console.error('getTownship', error);
-      });
-  }, [selectedRegion]);
+  const onClickItemDepartment = useCallback(
+    (e) => {
+      const departmentName = e.target.value;
+      dispatchState({ type: SET_SELECTED_DEPARTMENT, value: departmentName });
+      getTownships(selectedRegion, departmentName)
+        .then((townShips) => {
+          dispatchState({ type: SET_TOWN_SHIP_LIST, value: townShips });
+        })
+        .catch((error) => {
+          console.error("getTownship", error);
+        });
+    },
+    [selectedRegion]
+  );
 
   const onClickItemTownShip = useCallback((e) => {
     const townshipName = e.target.value;
@@ -147,18 +145,30 @@ const TabFullAddress = () => {
   }, []);
 
   const toggleSearch = useCallback(() => {
-    getTownshipByFullAddress(selectedRegion, selectedDepartment, selectedTownship)
+    getTownshipByFullAddress(
+      selectedRegion,
+      selectedDepartment,
+      selectedTownship
+    )
       .then((township) => {
         dispatch(actionSetTownShip(township));
       })
       .catch((e) => {
-        console.error('getTownshipByFullAddress', e);
+        console.error("getTownshipByFullAddress", e);
       });
   }, [dispatch, selectedDepartment, selectedRegion, selectedTownship]);
 
   return (
-    <Grid container item xs={12} style={{ marginTop: 20, justifyContent: 'space-between' }}>
-      <Grid item md={3}>
+    <Grid
+      container
+      item
+      xs={12}
+      style={{
+        marginTop: 20,
+        justifyContent: "space-between",
+      }}
+    >
+      <Grid item md={12} style={{ padding: "10px" }}>
         <Autocomplete
           options={regionList}
           getOptionLabel={(option) => option}
@@ -176,7 +186,7 @@ const TabFullAddress = () => {
           }}
         />
       </Grid>
-      <Grid item md={3}>
+      <Grid item md={12} style={{ padding: "10px" }}>
         <Autocomplete
           options={departmentList}
           getOptionLabel={(option) => option}
@@ -191,7 +201,7 @@ const TabFullAddress = () => {
           onSelect={onClickItemDepartment}
         />
       </Grid>
-      <Grid item md={3}>
+      <Grid item md={12} style={{ padding: "10px" }}>
         <Autocomplete
           options={townShipList}
           getOptionLabel={(option) => option}
@@ -206,15 +216,13 @@ const TabFullAddress = () => {
           onSelect={onClickItemTownShip}
         />
       </Grid>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={toggleSearch}
-      >
-        Recherche
-      </Button>
+      <Grid item md={12} style={{ display: "flex", justifyContent: "center" }}>
+        <Button variant="contained" color="#226653" onClick={toggleSearch}>
+          Calculer
+        </Button>
+      </Grid>
     </Grid>
   );
-}
+};
 
 export default TabFullAddress;

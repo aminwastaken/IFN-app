@@ -1,20 +1,14 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 
-import {
-  Button,
-  Grid,
-  TextField,
-  Input
-} from '@material-ui/core';
+import { Button, Grid, TextField, Input } from "@material-ui/core";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 
-import { getTownshipByPostalCode } from '../../API/main';
-import { actionSetTownShip } from '../action';
-
+import { getTownshipByPostalCode } from "../../API/main";
+import { actionSetTownShip } from "../action";
 
 const TabPostalCode = () => {
-  const [postalCode, setPostalCode] = useState('');
+  const [postalCode, setPostalCode] = useState("");
   const dispatch = useDispatch();
 
   const toggleChange = useCallback((e) => {
@@ -30,7 +24,7 @@ const TabPostalCode = () => {
           dispatch(actionSetTownShip(townShip));
         })
         .catch((e) => {
-          console.error('getTownshipByPostalCode', e);
+          console.error("getTownshipByPostalCode", e);
         });
     }
   }, [dispatch, postalCode]);
@@ -43,17 +37,13 @@ const TabPostalCode = () => {
           placeholder="Code Postal"
           value={postalCode}
           onChange={toggleChange}
-          error={postalCode !== '' && postalCode.length !== 5}
+          error={postalCode !== "" && postalCode.length !== 5}
           helperText="Votre code postal doit contenir 5 chiffres"
         />
       </Grid>
       <Grid container item xs justify="center">
-        <Button 
-          variant="contained"
-          color="primary"
-          onClick={toggleSearch}
-        >
-          Recherche
+        <Button variant="contained" color="#226653" onClick={toggleSearch}>
+          Calculer
         </Button>
       </Grid>
     </Grid>

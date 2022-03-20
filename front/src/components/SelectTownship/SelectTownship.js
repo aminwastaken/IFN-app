@@ -1,23 +1,17 @@
-import React, { useCallback, useState } from 'react';
-import {
-  Grid,
-  Tabs,
-  Tab,
-} from '@material-ui/core';
+import React, { useCallback, useState } from "react";
+import { Grid, Tabs, Tab } from "@material-ui/core";
 
-import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import PropTypes from "prop-types";
+import SwipeableViews from "react-swipeable-views";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
-
-import TabFullAdress from './TabFullAddress';
-import TabPostalCode from './TabPostalCode';
+import TabFullAdress from "./TabFullAddress";
+import TabPostalCode from "./TabPostalCode";
 
 function TabPanel({ children, value, index }) {
-
   return (
     <div
       role="tabpanel"
@@ -43,15 +37,15 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 30,
-    backgroundColor: theme.palette.background.paper,
-    width: '100%',
+    backgroundColor: "#FFF",
+    width: "100%",
     minHeight: 172,
   },
 }));
@@ -70,13 +64,13 @@ const SelectTownship = () => {
   };
 
   return (
-    <Grid container item xs={12} style={{ justifyContent: 'center' }}>
+    <Grid container item xs={12} style={{ justifyContent: "center" }}>
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="#226653">
           <Tabs
             value={value}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorColor="#226653"
+            textColor="#226653"
             onChange={handleChange}
             aria-label="disabled tabs example"
           >
@@ -85,7 +79,7 @@ const SelectTownship = () => {
           </Tabs>
         </AppBar>
         <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={value}
           onChangeIndex={handleChangeIndex}
         >
