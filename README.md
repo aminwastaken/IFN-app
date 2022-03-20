@@ -13,8 +13,8 @@ Une fois sur le site saisissez un code postal (ou sélectionnez une région, un 
 
 ## Auteur
 
-* [Valentin roussel]
-* [Khalil Sekhri]
+* [Valentin roussel] 
+* [Khalil Sekhri] khalil.sekhri@gmail.com
 * [Nashad hedoo] nashadhedoo@gmail.com
 * [Amine ziani]
 
