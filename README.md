@@ -15,7 +15,7 @@ Une fois sur le site saisissez un code postal (ou sélectionnez une région, un 
 
 * [Valentin roussel]
 * [Khalil Sekhri]
-* [Nashad hedoo]
+* [Nashad hedoo] nashadhedoo@gmail.com
 * [Amine ziani]
 
 ### Développé en 
