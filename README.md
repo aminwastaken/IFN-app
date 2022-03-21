@@ -16,7 +16,7 @@ Une fois sur le site saisissez un code postal (ou sélectionnez une région, un 
 * [Valentin roussel] valentin77181@gmail.com
 * [Khalil Sekhri] khalil.sekhri@gmail.com
 * [Nashad hedoo] nashadhedoo@gmail.com
-* [Amine ziani]
+* [Amine ziani] amine23.zn@gmail.gmail.com
 
 ### Développé en 
 
@@ -39,7 +39,6 @@ Une fois sur le site saisissez un code postal (ou sélectionnez une région, un 
 * [Pagespeedinsight]:
 
 <img width="1334" alt="Capture d’écran 2022-03-19 à 22 54 52" src="https://user-images.githubusercontent.com/1733380/159139723-15fe4edf-9456-4261-bd45-8a40be904dab.png">
-
 
 
 
